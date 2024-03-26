@@ -29,7 +29,7 @@ const vuetify = createVuetify({
     }
   }
 })
-//Vue.use(Vuetify)
+//Vue.use(vuetify)
 const app = createApp(App).use(vuetify).mount('#app')
 // createApp(App).use(vuetify).mount('#app')
 app.component('HomePage', {HomePage})

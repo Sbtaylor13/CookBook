@@ -1,6 +1,8 @@
-<!-- <template>
+<!--<template>
+  
   <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome CookHeads to Your Vue.js App"/>
+
 </template> -->
 
 
@@ -9,6 +11,8 @@
 // import HelloWorld from './components/HelloWorld.vue'
 // import HomePage from './components/HomePage.vue'
 // import RecipeBook from './components/RecipeBook.vue'
+import RecipeCard from './components/RecipeCard.vue'
+
 import {ref} from 'vue'
 /* eslint-disable */
 export default {
@@ -16,6 +20,7 @@ export default {
   components: {
     // HomePage,
     // RecipeBook
+    RecipeCard
   }
 }
 
@@ -27,11 +32,12 @@ function pageView() {
 }
 
 </script>
+
 <template>
   <v-app>
     <v-container>
       <!-- <v-icon icon="mdi-home" /> -->
-
+      <RecipeCard />
       <v-app-bar style="background-color: blueviolet;" color="teal-darken-4"  :elevation="2">
         <template v-slot:prepend>
           <v-app-bar-nav-icon style="color:red"></v-app-bar-nav-icon>
