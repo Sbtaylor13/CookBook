@@ -5,8 +5,6 @@
 
 </template> -->
 
-
-
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import HomePage from './components/HomePage.vue'
@@ -48,6 +46,7 @@ function pageView() {
         <!-- <v-icon>mdi-heart</v-icon> -->
         <v-icon icon="mdi-home" />
         <v-app-bar-title>Cookheads Recipe Project (coming soon!)</v-app-bar-title>
+        <v-btn style="background-color:blueviolet;color:white;font-weight: bolder;" @click="pageView">+ New Recipe</v-btn>
       </v-app-bar>
       <!-- <v-icon icon="mdi-home" /> -->
       <!-- <HomePage></HomePage> -->
