@@ -1,41 +1,22 @@
-<!--<template>
-  
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome CookHeads to Your Vue.js App"/>
-
-</template> -->
-
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-// import HomePage from './components/HomePage.vue'
-// import RecipeBook from './components/RecipeBook.vue'
 import RecipeCard from './components/RecipeCard.vue'
+import TopNavbar from './components/TopNavbar.vue'
 
-import {ref} from 'vue'
 /* eslint-disable */
 export default {
   name: 'App',
   components: {
-    // HomePage,
-    // RecipeBook
-    RecipeCard
+    RecipeCard,
+    TopNavbar
   }
 }
-
-let viewPage = ref(1);  //homepage
-function pageView() {
-  console.log("Pagenum = " + viewPage);
-   if( viewPage.value === 1) viewPage.value = 2
-   else viewPage.value = 1;
-}
-
 </script>
 
 <template>
   <v-app>
     <v-container>
-      <!-- <v-icon icon="mdi-home" /> -->
       <RecipeCard />
+<<<<<<< HEAD
       <v-app-bar style="background-color: blueviolet;" color="teal-darken-4"  :elevation="2">
         <template v-slot:prepend>
           <v-app-bar-nav-icon style="color:red"></v-app-bar-nav-icon>
@@ -52,6 +33,9 @@ function pageView() {
       <!-- <HomePage></HomePage> 
       <HomePage v-show="viewPage===1"></HomePage>
       <RecipeBook  v-show="viewPage===2"></RecipeBook>-->
+=======
+      <TopNavbar />
+>>>>>>> 6bb2659963be4c86645a26ba21a02766d729bd10
     </v-container>
   </v-app>
 </template>
