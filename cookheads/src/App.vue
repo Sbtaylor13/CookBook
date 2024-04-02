@@ -41,7 +41,7 @@ function pageView() {
           <v-app-bar-nav-icon style="color:red"></v-app-bar-nav-icon>
         </template>
         <v-btn style="background-color:blueviolet;color:white;font-weight: bolder;" @click="pageView">Home</v-btn>
-        <v-btn style="background-color:blueviolet;color:white;font-weight: bolder;" @click="pageView">Recipes</v-btn>
+        <!--  <v-btn style="background-color:blueviolet;color:white;font-weight: bolder;" @click="pageView">Recipes</v-btn>-->
 
         <!-- <v-icon>mdi-heart</v-icon> -->
         <v-icon icon="mdi-home" />
@@ -49,9 +49,9 @@ function pageView() {
         <v-btn style="background-color:blueviolet;color:white;font-weight: bolder;" @click="pageView">+ New Recipe</v-btn>
       </v-app-bar>
       <!-- <v-icon icon="mdi-home" /> -->
-      <!-- <HomePage></HomePage> -->
+      <!-- <HomePage></HomePage> 
       <HomePage v-show="viewPage===1"></HomePage>
-      <RecipeBook  v-show="viewPage===2"></RecipeBook>
+      <RecipeBook  v-show="viewPage===2"></RecipeBook>-->
     </v-container>
   </v-app>
 </template>
