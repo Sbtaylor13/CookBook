@@ -15,7 +15,7 @@ import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-import HomePage from './components/HomePage.vue'
+// import HomePage from './components/HomePage.vue'
 import RecipePage from './components/RecipePage.vue'
 
 const vuetify = createVuetify({
@@ -32,6 +32,6 @@ const vuetify = createVuetify({
 //Vue.use(vuetify)
 const app = createApp(App).use(vuetify).mount('#app')
 // createApp(App).use(vuetify).mount('#app')
-app.component('HomePage', {HomePage})
+// app.component('HomePage', {HomePage})
 app.component('RecipePage', {RecipePage})
 
