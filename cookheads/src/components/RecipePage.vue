@@ -1,7 +1,9 @@
+
 <template>
     <div style="background-color: aquamarine;">
         <div id="app">
         <div class="recipe-container"> 
+
            <h2>Recipe: {{ RecipeName }}</h2>
 
            <h3>Ingredients:</h3>

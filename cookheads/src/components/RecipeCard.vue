@@ -1,5 +1,7 @@
 <template>
   <div style="background-color:aquamarine;">
+    <!--Working Home Page button-->
+    <v-btn @click.stop="revertPage()">test</v-btn>
     <v-container v-show="!ShowRecipe">
       <v-row>
         <v-col
@@ -83,14 +85,25 @@ export default {
   methods: {
     showIngredients(index) {
       this.RecipeCard[index].showIngredients = true;
+      console.log("show")
     },
     hideIngredients(index) {
       this.RecipeCard[index].showIngredients = false;
+      console.log("hide")
     },
     changePage(pageName) {
       console.log("going to " + pageName);
       this.recipeName = pageName;
       this.ShowRecipe = true;
+
+      console.log("change")
+    },
+    revertPage() {
+      console.log("return to home");
+      this.recipeName = '';
+      this.ShowRecipe = false;
+
+      console.log("home?")
     }
   }
 }
