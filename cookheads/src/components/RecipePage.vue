@@ -1,50 +1,22 @@
-<template lang="">
-    <div>
-        <h1>Recipes</h1>
-    </div>
-</template>
+<template>
+    <div style="background-color: aquamarine;">
+        <div id="app">
+        <div class="recipe-container"> 
+           <h2>Recipe: {{ RecipeName }}</h2>
 
-<!-- !!!!!this file is only relevant to temporarily store kates code until substituions is figured out and then
-                 then this file will be deleted-->
-
-    <!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recipe, Ingredient Substitution, and Unit Converter</title>
-  <style>
-    #app {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-    .recipe-container, .substitution-container, .unit-converter-container {
-      width: 45%;
-      margin-bottom: 20px;
-    }
-  </style>
-</head>
-<body>
-  <div id="app">
-    <div class="recipe-container">
-      <h2>Recipe 1: Key Lime Pie</h2>
-      <h3>Ingredients:</h3>
+           <h3>Ingredients:</h3>
       <ul>
-        <li>28 oz sweetened condensed milk</li>
-        <li>¾ cup key lime juice</li>
-        <li>½ cup sour cream</li>
-        <li>1 tbsp lime zest</li>
-        <li>1 10 inch graham cracker crust</li>
+        <li v-for="(ingredient, index) in recipe.ingredients" :key="index">{{ingredient.amt}} {{ ingredient.units }} {{ ingredient.name }}</li>
+
       </ul>
-      <h3>Instructions:</h3>
+    <h3>Instructions:</h3>
       <ol>
-        <li>Combine condensed milk, key lime juice, sour cream, lime zest in a large bowl and mix until well combined.</li>
-        <li>Pour mixture into graham cracker crust.</li>
-        <li>Bake at 350°F for 10-15 minutes or until pie is firm to the touch but still jiggly.</li>
+        <li v-for="(instruction, index) in recipe.instructions" :key="index">{{instruction }}</li>
         <li>Enjoy!</li>
       </ol>
-    </div>
+
+  <!--   </div>  WILL SOLVE LATER unless shane/kate solves the substitution first:)
+
     <div class="substitution-container">
       <h2>Find Substitutes</h2>
       <div>
@@ -81,25 +53,117 @@
       </div>
       <div v-else>
         <p>Please enter a metric value to convert</p>
-      </div>
+      </div> -->
     </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    </div>
+  </template>
+  
   <script>
-    new Vue({
-      el: '#app',
-      data: {
-        searchQuery: '',
-        substitutions: [],
-        metricValue: '',
-        metricUnit: 'ml',
-        usValue: null,
-        usUnit: 'fl oz' // Default US unit
-      },
-      methods: {
-        searchSubstitutions() {
-          const ingredientSubstitutions = {
+  export default {
+    props: ['RecipeName'],
+    watch: { 
+      RecipeName: function(newVal) { // watch it
+          console.log('Prop changed: ', newVal);
+          for( let recipe of this.recipies) {
+            if( this.RecipeName === recipe.name){
+              this.recipe = recipe;
+              break;
+            }
+          }
+        }
+    },
+    data() {
+      return {
+        recipe: {}, //that matches name value
+        RecipeCard: [
+          { 
+        //     searchQuery: '',
+        // substitutions: [],
+        // metricValue: '',
+        // metricUnit: 'ml',
+        // usValue: null,
+        // usUnit: 'fl oz' // Default US unit
+          }],
+          recipies:[
+          {
+            name:"Key Lime Pie",
+            ingredients: [
+              {amt:"28", units:"oz", name:"sweetened condensed milk"},
+              {amt:"3/4", units:"cup", name: "key lime juice"},
+              {amt:"1/2", units:"cup", name: "sour cream"},
+              {amt:"1", units:"tbsp ", name: "lime zest"},
+              {amt:"1", units:"inch", name: "graham cracker crust"},
+              ],
+            instructions:[
+              "Combine condensed milk, key lime juice, sour cream, lime zest in a large bowl and mix until well combined.",
+              "Pour mixture into graham cracker crust.",
+             " Bake at 350°F for 10-15 minutes or until pie is firm to the touch but still jiggly."
+            ]},
+            {name:"Banana Bread",
+            ingredients: [
+              {amt:"1", units:"cup", name:"white sugar"},
+              {amt:"1/2", units:"cup", name: "butter"},
+              {amt:"2", units:"", name: "eggs"},
+              {amt:"1", units:"tsp ", name: "vanilla extract"},
+              {amt:"1 1/2", units:"cup", name: "all purpose flour"},
+              {amt:"1", units:"tsp", name: "baking soda"},
+              {amt:"1/2", units:"cup", name: "sour cream"},
+              {amt:"2", units:"", name: "medium bananas"},
+              ],
+            instructions:[
+             "Stir  sugar, melted butter, eggs and vanilla. Mix well. ",
+             "Combine flour baking soda and salt. Mix well",
+             "Mash bananas.",
+             "Fold in mushed bananas and sour cream",
+             "Pour mixture into a buttered 9x5 inch pan ",
+             "Bake at 350 for 1 hour or until a toothpick inserted into the center comes out clean",
+            ]},
+            {name:"Strawberry Pineapple Smoothie",
+            ingredients: [
+              {amt:"1", units:"cup", name:"frozen strawberries"},
+              {amt:"1", units:"cup", name: "frozen pineapple chunks"},
+              {amt:"1", units:"cup", name: "Chick Fil A Lemonade "},
+              ],
+            instructions:[
+              "Add ingredients to the blender and blend until smooth. ",
+              "Additional lemonade may be needed to achieve desired consistency.",
+            ]},
+            {name:"Tanghulu Grapes",
+            ingredients: [
+              {amt:"2", units:"cups", name:"white sugar"},
+              {amt:"1", units:"cup", name: "water"},
+              {amt:"1", units:"", name: "bag of grapes"},
+              ],
+            instructions:[
+              "Put grapes on a skewer, not exceeding 4 inches. ",
+              "Combine sugar and water in a pot over medium heat. DO NOT STIR",
+              "When sugar reaches 300 degrees Fahrenheit swirl grapes in mixture.",
+              "Dip into an ice bath to cool."
+            ]},
+            {name:"Peach Cobbler",
+            ingredients: [
+              {amt:"1/2", units:"cup", name:"butter melted"},
+              {amt:"16", units:"oz", name: "can of sliced peaches"},
+              {amt:"1", units:"cup", name: "sugar"},
+              {amt:"1", units:"cup", name: "all purpose flour"},
+              {amt:"1", units:"cup", name: "milk"},
+              {amt:"2", units:"tsp", name: "baking powder"},
+              {amt:"1/4", units:"tsp", name: " salt"},
+              {amt:"2", units:"tsp", name: " cinnamon powder"},
+              ],
+            instructions:[
+              "Pour melted butter into a 2qt baking dish  ",
+              "In a bowl, mix flour, baking powder and sugar. Mix well. ",
+              "Pour in milk and mix. ",
+              "Drain Peaches, add 2 tsp of cinnamon powder and mix. ",
+              "Pour flour mixture into pan with melted butter",
+              "Add peaches evenly into pan",
+              "Bake at 400 degrees Fahrenheit for 30 minutes or until until a toothpick inserted into the center comes out clean",
+            ]},
+            ],
+          ingredientSubstitutions: {   
+            //{name:"allspice", equivalent: ["1 teaspoon of this is equivalent to", "1/2 teaspoon cinnamon", "1/4 teaspoon ginger", "1/4 teaspoon cloves"]},
             "allspice": ["1 teaspoon of this is equivalent to", "1/2 teaspoon cinnamon", "1/4 teaspoon ginger", "1/4 teaspoon cloves"],
             "arrowroot starch": ["1 teaspoon of this is equivalent to", "1 tablespoon flour", "1 teaspoon cornstarch"],
             "baking mix": ["1 cup of this is equivalent to", "1 cup pancake mix"],
@@ -169,36 +233,44 @@
             "wine": ["1 cup of this is equivalent to", "1 cup chicken or beef broth", "1 cup fruit juice mixed with 2 teaspoons vinegar", "1 cup water"],
             "yeast": ["1 (.25-ounce) package of this is equivalent to", "1 cake compressed yeast", "2 1/2 teaspoons active dry yeast", "2 1/2 teaspoons rapid rise yeast"],
             "yogurt": ["1 cup of this is equivalent to", "1 cup sour cream", "1 cup buttermilk", "1 cup sour milk"]
-          };
-
-          const query = this.searchQuery.toLowerCase();
-          this.substitutions = ingredientSubstitutions[query] || [];
+          },        
+      }
+    },
+    methods: {
+        changePage(pageName) {
+            console.log("going to " + pageName);
         },
         convertToUS() {
-          // Conversion rates (approximate)
-          const conversionRates = {
-            ml: 0.033814, // 1 ml ≈ 0.033814 fl oz
-            g: 0.035274, // 1 g ≈ 0.035274 oz
-            kg: 35.274 // 1 kg ≈ 35.274 oz
-          };
+            // Conversion rates (approximate)
+            const conversionRates = {
+                ml: 0.033814, // 1 ml ≈ 0.033814 fl oz
+                g: 0.035274, // 1 g ≈ 0.035274 oz
+                kg: 35.274 // 1 kg ≈ 35.274 oz
+            };
 
-          const rate = conversionRates[this.metricUnit];
-          if (rate) {
-            this.usValue = (parseFloat(this.metricValue) * rate).toFixed(2);
-          } else {
-            this.usValue = null;
-          }
-        }
-      }
-    });
-
-</body>
-</html> -->
-<script>
-export default {
-    
-}
-</script>
-<style lang="sass">
-    
-</style>
+            const rate = conversionRates[this.metricUnit];
+            if (rate) {
+                this.usValue = (parseFloat(this.metricValue) * rate).toFixed(2);
+            } else {
+                this.usValue = null;
+            }
+        },
+        // getSubstitutions(query) {
+        //    // this.substitutions = ingredientSubstitutions[query.toLowerCase()] || [];
+        // }
+    }
+  }
+  </script>
+  
+  <style scoped>
+      #app {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .recipe-container, .substitution-container, .unit-converter-container {
+      width: 45%;
+      margin-bottom: 20px;
+    }
+  </style>
+  

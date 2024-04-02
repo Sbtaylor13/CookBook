@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <v-container>
+  <div style="background-color:aquamarine;">
+    <v-container v-show="!ShowRecipe">
       <v-row>
         <v-col
           v-for="(food, index) in RecipeCard"
@@ -15,7 +15,9 @@
             @mouseenter="showIngredients(index)"
             @mouseleave="hideIngredients(index)"
           >
-            <v-card-title>{{ food.name }}</v-card-title>
+            <v-card-title>        
+              <v-btn @click.stop="changePage(food.name)" elevation="8" size="x-large">{{ food.name }}</v-btn>
+            </v-card-title>
             <v-expand-transition>
               <v-card-text v-if="food.showIngredients">
                 <v-card-text><strong>Ingredients:</strong>
@@ -27,13 +29,23 @@
         </v-col>
       </v-row>
     </v-container>
+    <recipe-page v-show="ShowRecipe" :RecipeName="recipeName" />
+
   </div>
 </template>
 
 <script>
+import RecipePage from './RecipePage.vue'
+
+
 export default {
+  components: {
+    'recipe-page': RecipePage, 
+  },
   data() {
     return {
+      ShowRecipe: false,
+      recipeName:'',
       RecipeCard: [
         { 
           name: 'Key Lime Pie', 
@@ -74,6 +86,11 @@ export default {
     },
     hideIngredients(index) {
       this.RecipeCard[index].showIngredients = false;
+    },
+    changePage(pageName) {
+      console.log("going to " + pageName);
+      this.recipeName = pageName;
+      this.ShowRecipe = true;
     }
   }
 }
