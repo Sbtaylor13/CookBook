@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%;height:100%;background-color:lightblue;">
+  <div class="bkgImg" :style="{ 'background-image': 'url(' + require('../assets/backgroundimage4.png') + ')'}">
     <!--Working Home Page button-->
     <!-- <v-btn @click.stop="revertPage()">test</v-btn> -->
     <v-container v-show="!ShowRecipe">
@@ -120,5 +120,10 @@ export default {
   height: 0;
   opacity: 0;
   overflow: hidden;
+}
+.bkgImg {
+      background-size: cover;
+      height: 100%;
+
 }
 </style>

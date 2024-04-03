@@ -1,23 +1,23 @@
 
 <template>
-    <div class="bkgImg" :style="{ 'background-image': 'url(' + require('../assets/backgroundimage2.png') + ')'}">
+    <div class="bkgImg" :style="{ 'background-image': 'url(' + require('../assets/background2.png') + ')'}">
 
-      <v-btn class="home-button" @click="$emit('goHome')">Home</v-btn>
+      <v-btn class="home-button"  @click="$emit('goHome')">Home</v-btn>
 
         <div id="app">
         <div class="recipe-container"> 
 
-           <h2>{{ RecipeName }}</h2>
+           <h1>{{ RecipeName }}</h1>
 
-           <h3>Ingredients:</h3>
-      <ul>
-        <li v-for="(ingredient, index) in recipe.ingredients" :key="index">{{ingredient.amt}} {{ ingredient.units }} {{ ingredient.name }}</li>
+           <h2>Ingredients:</h2>
+      <ul >
+        <li  class="font-sizing" v-for="(ingredient, index) in recipe.ingredients" :key="index">{{ingredient.amt}} {{ ingredient.units }} {{ ingredient.name }}</li>
 
       </ul>
-    <h3>Instructions:</h3>
+    <h2>Instructions:</h2>
       <ol>
-        <li v-for="(instruction, index) in recipe.instructions" :key="index">{{instruction }}</li>
-        <li>Enjoy!</li>
+        <li class="font-sizing" v-for="(instruction, index) in recipe.instructions" :key="index">{{instruction }}</li>
+        <li class="font-sizing" >Enjoy!</li>
       </ol>
 
   <!--   </div>  WILL SOLVE LATER unless shane/kate solves the substitution first:)
@@ -281,18 +281,25 @@
       flex-wrap: wrap;
       justify-content: space-between;
     } */
+    .font-sizing{
+
+      padding-left: 10px;
+      margin: 0;
+      font-size: 20px;
+    }
     .home-button {
       margin-left:25px;
       margin-top:25px;
     }
     .recipe-container, .substitution-container, .unit-converter-container {
       width: 100%;
-      margin-bottom: 20px;
+      /* margin-bottom: 20px; */
       margin-left: 50px;
     }
     .bkgImg {
       background-size: cover;
       height: 100%;
+      overflow: hidden;
     }
   </style>
   
