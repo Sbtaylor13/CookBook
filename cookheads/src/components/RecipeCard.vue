@@ -1,7 +1,7 @@
 <template>
-  <div style="background-color:aquamarine;">
+  <div style="width:100%;height:100%;background-color:lightblue;">
     <!--Working Home Page button-->
-    <v-btn @click.stop="revertPage()">test</v-btn>
+    <!-- <v-btn @click.stop="revertPage()">test</v-btn> -->
     <v-container v-show="!ShowRecipe">
       <v-row>
         <v-col
@@ -31,7 +31,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <recipe-page v-show="ShowRecipe" :RecipeName="recipeName" />
+    <recipe-page v-if="ShowRecipe" :RecipeName="recipeName" @GoHome="revertPage"/>
 
   </div>
 </template>
@@ -92,7 +92,7 @@ export default {
       console.log("hide")
     },
     changePage(pageName) {
-      console.log("going to " + pageName);
+      console.log("opening recipe: " + pageName);
       this.recipeName = pageName;
       this.ShowRecipe = true;
 

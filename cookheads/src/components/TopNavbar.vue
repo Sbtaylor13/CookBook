@@ -11,7 +11,7 @@
             <v-app-bar-title>Cookheads Recipe Project (coming soon!)</v-app-bar-title>
             <v-btn style="background-color:blueviolet;color:white;font-weight: bolder;" @click="pageView">+ New Recipe</v-btn>
         </v-app-bar>
-      <RecipeBook  v-show="viewPage===2"></RecipeBook>
+      <!-- <RecipeBook  v-show="viewPage===2"></RecipeBook> -->
 </template>
 
 <script>

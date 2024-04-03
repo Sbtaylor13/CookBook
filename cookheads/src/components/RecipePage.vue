@@ -1,10 +1,13 @@
 
 <template>
-    <div style="background-color: aquamarine;">
+    <div class="bkgImg" :style="{ 'background-image': 'url(' + require('../assets/backgroundimage2.png') + ')'}">
+
+      <v-btn class="home-button" @click="$emit('goHome')">Home</v-btn>
+
         <div id="app">
         <div class="recipe-container"> 
 
-           <h2>Recipe: {{ RecipeName }}</h2>
+           <h2>{{ RecipeName }}</h2>
 
            <h3>Ingredients:</h3>
       <ul>
@@ -64,17 +67,17 @@
   <script>
   export default {
     props: ['RecipeName'],
-    watch: { 
-      RecipeName: function(newVal) { // watch it
-          console.log('Prop changed: ', newVal);
-          for( let recipe of this.recipies) {
-            if( this.RecipeName === recipe.name){
-              this.recipe = recipe;
-              break;
-            }
-          }
-        }
-    },
+    // watch: { 
+    //   RecipeName: function(newVal) { // watch it
+    //       console.log('Prop changed: ', newVal);
+    //       for( let recipe of this.recipies) {
+    //         if( this.RecipeName === recipe.name){
+    //           this.recipe = recipe;
+    //           break;
+    //         }
+    //       }
+    //     }
+    // },
     data() {
       return {
         recipe: {}, //that matches name value
@@ -238,6 +241,14 @@
           },        
       }
     },
+    created: function(){
+      for( let recipe of this.recipies) {
+            if( this.RecipeName === recipe.name){
+              this.recipe = recipe;
+              break;
+            }
+          }
+    },
     methods: {
         changePage(pageName) {
             console.log("going to " + pageName);
@@ -264,15 +275,24 @@
   }
   </script>
   
-  <style scoped>
-      #app {
+  <style >
+      /* #app {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+    } */
+    .home-button {
+      margin-left:25px;
+      margin-top:25px;
     }
     .recipe-container, .substitution-container, .unit-converter-container {
-      width: 45%;
+      width: 100%;
       margin-bottom: 20px;
+      margin-left: 50px;
+    }
+    .bkgImg {
+      background-size: cover;
+      height: 100%;
     }
   </style>
   
