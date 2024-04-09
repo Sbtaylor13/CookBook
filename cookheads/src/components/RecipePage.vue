@@ -2,8 +2,6 @@
 <template>
     <div class="bkgImg" :style="{ 'background-image': 'url(' + require('../assets/background2.png') + ')'}">
 
-      <v-btn class="home-button"  @click="$emit('goHome')">Home</v-btn>
-
         <div id="app">
         <div class="recipe-container"> 
 

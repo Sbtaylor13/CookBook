@@ -2,7 +2,7 @@
   <div class="bkgImg" :style="{ 'background-image': 'url(' + require('../assets/backgroundimage4.png') + ')'}">
     <!--Working Home Page button-->
     <!-- <v-btn @click.stop="revertPage()">test</v-btn> -->
-    <v-container v-show="!ShowRecipe">
+    <v-container>
       <v-row>
         <v-col
           v-for="(food, index) in RecipeCard"
@@ -17,8 +17,8 @@
             @mouseenter="showIngredients(index)"
             @mouseleave="hideIngredients(index)"
           >
-            <v-card-title>        
-              <v-btn @click.stop="changePage(food.name)" elevation="8" size="x-large">{{ food.name }}</v-btn>
+            <v-card-title>        <!--food.name-->
+              <v-btn @click.stop="$emit('ViewRecipe',food.name)" elevation="8" size="x-large">{{ food.name }}</v-btn>
             </v-card-title>
             <v-expand-transition>
               <v-card-text v-if="food.showIngredients">
@@ -31,22 +31,15 @@
         </v-col>
       </v-row>
     </v-container>
-    <recipe-page v-if="ShowRecipe" :RecipeName="recipeName" @GoHome="revertPage"/>
-
   </div>
 </template>
 
 <script>
-import RecipePage from './RecipePage.vue'
-
 
 export default {
-  components: {
-    'recipe-page': RecipePage, 
-  },
+
   data() {
     return {
-      ShowRecipe: false,
       recipeName:'',
       RecipeCard: [
         { 
@@ -85,26 +78,24 @@ export default {
   methods: {
     showIngredients(index) {
       this.RecipeCard[index].showIngredients = true;
-      console.log("show")
     },
     hideIngredients(index) {
       this.RecipeCard[index].showIngredients = false;
-      console.log("hide")
     },
-    changePage(pageName) {
-      console.log("opening recipe: " + pageName);
-      this.recipeName = pageName;
-      this.ShowRecipe = true;
+    // changePage(pageName) {
+    //   console.log("opening recipe: " + pageName);
+    //   this.recipeName = pageName;
+    //   this.viewPage = 'recipe';
 
-      console.log("change")
-    },
-    revertPage() {
-      console.log("return to home");
-      this.recipeName = '';
-      this.ShowRecipe = false;
+    //   console.log("change")
+    // },
+    // revertPage() {
+    //   console.log("return to home");
+    //   this.recipeName = '';
+    //   this.viewPage = 'cards';
 
-      console.log("home?")
-    }
+    //   console.log("home?")
+    // }
   }
 }
 </script>
