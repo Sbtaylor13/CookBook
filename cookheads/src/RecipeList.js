@@ -14,7 +14,8 @@ const RecipeList =
             "Combine condensed milk, key lime juice, sour cream, lime zest in a large bowl and mix until well combined.",
             "Pour mixture into graham cracker crust.",
            " Bake at 350°F for 10-15 minutes or until pie is firm to the touch but still jiggly."
-          ]},
+          ]
+        },
           {
           name:"Banana Bread",
           difficulty: '⭐⭐⭐', 
@@ -35,7 +36,8 @@ const RecipeList =
            "Fold in mushed bananas and sour cream",
            "Pour mixture into a buttered 9x5 inch pan ",
            "Bake at 350 for 1 hour or until a toothpick inserted into the center comes out clean",
-          ]},
+          ]
+        },
           {name:"Strawberry Pineapple Smoothie",
           difficulty: '⭐⭐', 
           ingredients: [
@@ -46,7 +48,8 @@ const RecipeList =
           instructions:[
             "Add ingredients to the blender and blend until smooth. ",
             "Additional lemonade may be needed to achieve desired consistency.",
-          ]},
+          ]
+        },
           {name:"Tanghulu Grapes",
           difficulty: '⭐⭐⭐⭐', 
           ingredients: [
@@ -59,7 +62,8 @@ const RecipeList =
             "Combine sugar and water in a pot over medium heat. DO NOT STIR",
             "When sugar reaches 300 degrees Fahrenheit swirl grapes in mixture.",
             "Dip into an ice bath to cool."
-          ]},
+          ]
+        },
           {name:"Peach Cobbler",
           difficulty: '⭐⭐', 
           ingredients: [
@@ -80,7 +84,8 @@ const RecipeList =
             "Pour flour mixture into pan with melted butter",
             "Add peaches evenly into pan",
             "Bake at 400 degrees Fahrenheit for 30 minutes or until until a toothpick inserted into the center comes out clean",
-          ]},
+          ]
+        },
           ]
 
 export default  RecipeList;
