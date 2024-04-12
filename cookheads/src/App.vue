@@ -3,7 +3,7 @@ import AddRecipe from './components/AddRecipe.vue'
 import RecipeCard from './components/RecipeCard.vue'
 import RecipePage from './components/RecipePage.vue';
 import TopNavbar from './components/TopNavbar.vue'
-
+import RecipeList from './RecipeList.js';
 /* eslint-disable */
 export default {
   name: 'App',
@@ -12,16 +12,19 @@ export default {
     RecipePage, 
     AddRecipe,
     TopNavbar
+    // RecipeList
   },
   data() {
     return {
       viewPage: "home", //or "recipe" or "add"
-      recipeName: ''
+      recipeName: '',
+      recipeList:RecipeList
     }
   },
   methods: {
     openRecipe(pageName) {
       console.log("opening recipe: " + pageName);
+      console.log(this.recipeList)
       this.recipeName = pageName;
       this.viewPage = 'recipe';
 
@@ -36,6 +39,10 @@ export default {
     },
     addRecipe() {
       this.viewPage = 'add'
+    },
+    saveRecipe( recipe ){
+      console.log("added Recipe to list");
+      this.recipeList.push(recipe);
     }
     
   }
@@ -45,9 +52,9 @@ export default {
 <template>
   <v-app>
     <!-- <v-container> -->
-      <RecipeCard v-if="viewPage==='home'" @ViewRecipe="openRecipe"/>
-      <RecipePage v-if="viewPage==='recipe'" :RecipeName="recipeName" />
-      <AddRecipe v-if="viewPage==='add'"></AddRecipe>
+      <RecipeCard v-if="viewPage==='home'" @ViewRecipe="openRecipe" :Recipies="recipeList"/>
+      <RecipePage v-if="viewPage==='recipe'" :RecipeName="recipeName" :Recipies="recipeList"/>
+      <AddRecipe v-if="viewPage==='add'" @SaveRecipe="saveRecipe"></AddRecipe>
       <TopNavbar onHome="viewPage='home'" :hideHome="viewPage==='home'" @GoHome="revertPage" @GoAddRecipe="addRecipe"/>
     <!-- </v-container> -->
   </v-app>
