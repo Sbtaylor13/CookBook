@@ -55,7 +55,7 @@ const RecipeList =
           ingredients: [
             {amt:"2", units:"cups", name:"white sugar"},
             {amt:"1", units:"cup", name: "water"},
-            {amt:"1", units:"", name: "bag of grapes"},
+            {amt:"1", units:"bag", name: "grapes"},
             ],
           instructions:[
             "Put grapes on a skewer, not exceeding 4 inches. ",
@@ -68,13 +68,13 @@ const RecipeList =
           difficulty: '⭐⭐', 
           ingredients: [
             {amt:"1/2", units:"cup", name:"butter melted"},
-            {amt:"16", units:"oz", name: "can of sliced peaches"},
+            {amt:"16", units:"oz", name: "sliced peaches"},
             {amt:"1", units:"cup", name: "sugar"},
             {amt:"1", units:"cup", name: "all purpose flour"},
             {amt:"1", units:"cup", name: "milk"},
             {amt:"2", units:"tsp", name: "baking powder"},
-            {amt:"1/4", units:"tsp", name: " salt"},
-            {amt:"2", units:"tsp", name: " cinnamon powder"},
+            {amt:"1/4", units:"tsp", name: "salt"},
+            {amt:"2", units:"tsp", name: "cinnamon powder"},
             ],
           instructions:[
             "Pour melted butter into a 2qt baking dish  ",

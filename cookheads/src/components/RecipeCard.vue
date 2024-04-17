@@ -1,6 +1,6 @@
 <template>
   <div class="bkgImg" :style="{ 'background-image': 'url(' + require('../assets/food.jpg') + ')'}">
-    <v-container>
+    <div style="margin-right: 20px; margin-left: 20px;margin-top: 50px;">
       <v-row>
         <v-col
           v-for="(food, index) in Recipies"
@@ -16,7 +16,7 @@
             @mouseleave="hideIngredients()"
           >
             <v-card-title>
-              <v-btn @click.stop="$emit('ViewRecipe',food.name)" elevation="8" size="x-large">{{ food.name }}</v-btn>
+              <v-btn @click.stop="$emit('ViewRecipe',food.name)" elevation="8" >{{ food.name }}</v-btn>
             </v-card-title>
             <v-expand-transition>
               <v-card-text v-if="showIngredientFlag[index]">
@@ -29,7 +29,7 @@
           </v-card>
         </v-col>
       </v-row>
-    </v-container>
+     </div>
   </div>
  <!-- {{ Recipies }} -->
 </template>

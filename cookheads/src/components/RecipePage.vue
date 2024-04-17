@@ -1,24 +1,42 @@
 
 <template>
-    <div class="bkgImg" :style="{ 'background-image': 'url(' + require('../assets/background2.png') + ')'}">
+  <div class="bkgImg" :style="{ 'background-image': 'url(' + require('../assets/background7.png') + ')'}">
 
-        <div id="app">
-        <div class="recipe-container"> 
+    <div id="app">
+      <div class="recipe-container">
 
-           <h1>{{ RecipeName }}</h1>
+        <h1>{{ RecipeName }}</h1>
 
-           <h2>Ingredients:</h2>
-      <ul >
-        <li  class="font-sizing" v-for="(ingredient, index) in recipe.ingredients" :key="index">{{ingredient.amt}} {{ ingredient.units }} {{ ingredient.name }}</li>
+        <h2>Ingredients:</h2>
+        <ul>
+          <li class="font-sizing" v-for="(ingredient, index) in recipe.ingredients" :key="index">
+            {{ingredient.amt}} {{ ingredient.units }} {{ ingredient.name }}
+            <v-menu v-if="getSubs(ingredient.name)">
+              <template v-slot:activator="{ props }">
+                <v-btn style="background-color: rgb(214, 255, 229)" v-bind="props">
+                  Substitutions
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item style="background-color: rgb(214, 255, 229)">
+                  <v-list-item-title>{{ getSubs(ingredient.name).equivalence }}</v-list-item-title>
+                </v-list-item>
+                <v-divider></v-divider>
+                <v-list-item v-for="(item, index) in getSubs(ingredient.name).options" :key="index" :value="index">
+                  <v-list-item-title>{{ item }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </li>
 
-      </ul>
-    <h2>Instructions:</h2>
-      <ol>
-        <li class="font-sizing" v-for="(instruction, index) in recipe.instructions" :key="index">{{instruction }}</li>
-        <li class="font-sizing" >Enjoy!</li>
-      </ol>
+        </ul>
+        <h2>Instructions:</h2>
+        <ol>
+          <li class="font-sizing" v-for="(instruction, index) in recipe.instructions" :key="index">{{instruction }}</li>
+          <li class="font-sizing">Enjoy!</li>
+        </ol>
 
-  <!--   </div>  WILL SOLVE LATER unless shane/kate solves the substitution first:)
+        <!--   </div>  WILL SOLVE LATER unless shane/kate solves the substitution first:)
 
     <div class="substitution-container">
       <h2>Find Substitutes</h2>
@@ -57,12 +75,13 @@
       <div v-else>
         <p>Please enter a metric value to convert</p>
       </div> -->
+      </div>
     </div>
   </div>
-    </div>
-  </template>
+</template>
   
   <script>
+  import SubstitutionList from "../SubstitutionList.js"
   export default {
     props: ['RecipeName', 'Recipies'],
     // watch: { 
@@ -159,7 +178,8 @@
             "wine": ["1 cup of this is equivalent to", "1 cup chicken or beef broth", "1 cup fruit juice mixed with 2 teaspoons vinegar", "1 cup water"],
             "yeast": ["1 (.25-ounce) package of this is equivalent to", "1 cake compressed yeast", "2 1/2 teaspoons active dry yeast", "2 1/2 teaspoons rapid rise yeast"],
             "yogurt": ["1 cup of this is equivalent to", "1 cup sour cream", "1 cup buttermilk", "1 cup sour milk"]
-          },        
+          },
+          subList:SubstitutionList   
       }
     },
     created: function(){
@@ -191,6 +211,10 @@
                 this.usValue = null;
             }
         },
+        getSubs(ingredientName){
+          const sub = this.subList.find((element) => element.name === ingredientName);
+          return sub;
+        }
         // getSubstitutions(query) {
         //    // this.substitutions = ingredientSubstitutions[query.toLowerCase()] || [];
         // }
