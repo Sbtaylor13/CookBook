@@ -7,7 +7,10 @@
            
 
             <!-- <v-icon icon="mdi-home" /> -->
-            <v-app-bar-title style="font-size:22pt; color:rgb(92,136,121);text-align: center;">Cookheads Recipe Project</v-app-bar-title>
+            <v-app-bar-title style="font-size: 22pt; color: rgb(92, 136, 121); text-align: center; line-height: 1.3;">
+                Cookheads Recipe Project
+            </v-app-bar-title>
+
             <v-btn style="background-color:rgb(92,136,121);color:white;font-weight: bolder;" @click="$emit('GoAddRecipe')">+ New Recipe</v-btn>
         </v-app-bar>
 </template>
