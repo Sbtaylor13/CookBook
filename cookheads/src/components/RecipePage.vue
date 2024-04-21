@@ -1,7 +1,7 @@
 
 <template>
-  <div class="bkgImg" :style="{ 'background-image': 'url(' + require('../assets/background7.png') + ')'}">
-
+  <div class="bkgImg" :style="[Five08?{'background-color':'#C0C0C0'}:{ 'background-image': 'url(' + require('../assets/background7.png') + ')'}]">
+   
     <div id="app">
       <div class="recipe-container">
 
@@ -83,7 +83,7 @@
   <script>
   import SubstitutionList from "../SubstitutionList.js"
   export default {
-    props: ['RecipeName', 'Recipies'],
+    props: ['RecipeName', 'Recipies', 'Five08'],
     // watch: { 
     //   RecipeName: function(newVal) { // watch it
     //       console.log('Prop changed: ', newVal);
