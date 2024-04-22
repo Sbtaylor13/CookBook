@@ -1,3 +1,14 @@
+<template>
+  <v-app>
+    <!-- <v-container> -->
+      <RecipeCard v-if="viewPage==='home'" @ViewRecipe="openRecipe" @DeleteRecipe="deleteRecipe" :Recipies="recipeList" :Five08="fiveOhEight"/>
+      <RecipePage v-if="viewPage==='recipe'" :RecipeName="recipeName" :Recipies="recipeList" :Five08="fiveOhEight"/>
+      <AddRecipe v-if="viewPage==='add'" @SaveRecipe="saveRecipe" :Five08="fiveOhEight"></AddRecipe>
+      <TopNavbar onHome="viewPage='home'" :hideHome="viewPage==='home'" @GoHome="revertPage" @GoAddRecipe="addRecipe" :Five08="fiveOhEight" @Toggle508="toggle508"/>
+    <!-- </v-container> -->
+  </v-app>
+</template>
+
 <script>
 import AddRecipe from './components/AddRecipe.vue'
 import RecipeCard from './components/RecipeCard.vue'
@@ -18,7 +29,8 @@ export default {
     return {
       viewPage: "home", //or "recipe" or "add"
       recipeName: '',
-      recipeList:RecipeList
+      recipeList:RecipeList,
+      fiveOhEight:false  // disabliity compliant
     }
   },
   methods: {
@@ -40,25 +52,22 @@ export default {
     addRecipe() {
       this.viewPage = 'add'
     },
+    deleteRecipe( recipeIndex ) {
+      this.recipeList.splice(recipeIndex, 1)
+    },
     saveRecipe( recipe ){
       console.log("added Recipe to list");
       this.recipeList.push(recipe);
+},
+    toggle508() {
+      this.fiveOhEight = !this.fiveOhEight;
+      console.log('set 508 to :' + this.fiveOhEight)
     }
     
   }
 }
 </script>
 
-<template>
-  <v-app>
-    <!-- <v-container> -->
-      <RecipeCard v-if="viewPage==='home'" @ViewRecipe="openRecipe" :Recipies="recipeList"/>
-      <RecipePage v-if="viewPage==='recipe'" :RecipeName="recipeName" :Recipies="recipeList"/>
-      <AddRecipe v-if="viewPage==='add'" @SaveRecipe="saveRecipe"></AddRecipe>
-      <TopNavbar onHome="viewPage='home'" :hideHome="viewPage==='home'" @GoHome="revertPage" @GoAddRecipe="addRecipe"/>
-    <!-- </v-container> -->
-  </v-app>
-</template>
 <style>
 #app {
   font-family: cursive;
