@@ -58,6 +58,7 @@ export default {
     saveRecipe( recipe ){
       console.log("added Recipe to list");
       this.recipeList.push(recipe);
+      this.viewPage = 'home';
 },
     toggle508() {
       this.fiveOhEight = !this.fiveOhEight;
